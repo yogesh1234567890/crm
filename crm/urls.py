@@ -20,6 +20,10 @@ from products.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',dashboard),
-    path('products/',ProductView),
+    path('',dashboard,name='dashboard'),
+    path('products/',ProductView,name='products'),
+    path('add-products/',create_products,name='add-products'),
+    path('update/<int:id>/',update_products,name='update-products'),
+    path('delete/<int:id>/', delete_products,name='delete-products'),
+
 ]

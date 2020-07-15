@@ -152,7 +152,7 @@
                     <div class="col-sm-12">
                         <div class="white-box">
                             <h3 class="box-title">Basic Table</h3>
-                            <p class="text-muted">Add class <code>.table</code></p>
+                            <p class="text-muted"><a href="{% url 'add-products'%}">Add new product</a></p>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -162,16 +162,21 @@
                                             <th>Price</th>
                                             <th>Quantity</th>
                                             <th>sales</th>
+                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Deshmukh</td>
-                                            <td>Prohaska</td>
-                                            <td>@Genelia</td>
-                                            <td>admin</td>
+                                    {% for u in data %}
+                                        <td>
+                                            <td>{{u.id}}</td>
+                                            <td>{{u.Name}}</td>
+                                            <td>{{u.price}}</td>
+                                            <td>{{u.quantity}}</td>
+                                            <td><a href="{% url 'update-products' u.id%}">Update</a></td>
+                                            <td><a href="{% url 'delete-products' u.id%}">Delete</a></td>
+
                                         </tr>
+                                    {% endfor %}
 
                                     </tbody>
                                 </table>
